@@ -1,8 +1,21 @@
-﻿namespace AvaloniaLoudnessMeter.ViewModels;
+﻿using ReactiveUI;
+namespace AvaloniaLoudnessMeter.ViewModels;
 
-public class MainViewModel : ViewModelBase
+public partial class MainViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+    private string? _boldTitle = "AVALONIA";
+    private string? _regularTitle = "LOUDNESS METER";
+
+    public string? BoldTitle
+    {
+        get => _boldTitle;
+        set => this.RaiseAndSetIfChanged(ref _boldTitle, value);
+    }
+
+    public string? RegularTitle
+    {
+        get => _regularTitle;
+        set => this.RaiseAndSetIfChanged(ref _regularTitle, value);
+    }
+
 }
