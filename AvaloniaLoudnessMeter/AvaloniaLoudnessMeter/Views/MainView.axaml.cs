@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Controls.Primitives;
+using Avalonia.Media;
 using AvaloniaLoudnessMeter.ViewModels;
 using System;
 
