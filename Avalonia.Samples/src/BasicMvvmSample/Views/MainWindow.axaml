@@ -15,6 +15,10 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel DataContext="{Binding ReactiveViewModel}" Margin="5">
+        <TextBlock Margin="5">Enter your name:</TextBlock>
+        <TextBox Text="{Binding Name}" Margin="5" />
+        <TextBox Text="{Binding Greeting, Mode=OneWay}" IsReadOnly="True" FontWeight="Bold" Margin="5" />
+    </StackPanel>
 
 </Window>
