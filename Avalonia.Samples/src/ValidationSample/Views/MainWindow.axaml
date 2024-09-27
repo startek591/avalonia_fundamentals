@@ -6,8 +6,17 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ValidationSample.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        x:CompileBindings="True"
         Icon="/Assets/avalonia-logo.ico"
         Title="ValidationSample">
+
+        <Window.Styles>
+            <Style Selector="TextBox">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="MinWidth" Value="200" />
+            </Style>
+        </Window.Styles>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +24,20 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <TabControl TabStripPlacement="Bottom">
+        <TabItem Header="DataAnnotations">
+            <TextBox Text="{Binding ValidationUsingDataAnnotationViewModel.EMail}" />
+        </TabItem>
+
+        <TabItem Header="INotifyDataErrors">
+            <TextBox Text="{Binding ValidationUsingINotifyDataErrorInfoViewModel.EMail}" />
+        </TabItem>
+
+        <TabItem Header="ExceptionInsideSetter">
+            <TextBox Text="{Binding ValidationUsingExceptionInsideSetterViewModel.EMail}" />
+        </TabItem>
+    </TabControl>
+
+    
 
 </Window>
