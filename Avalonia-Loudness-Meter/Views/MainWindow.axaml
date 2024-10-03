@@ -3,11 +3,25 @@
         xmlns:vm="using:Avalonia_Loudness_Meter.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Avalonia_Loudness_Meter"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia_Loudness_Meter.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Avalonia_Loudness_Meter">
+
+    <Window.Styles>
+        <Style Selector="Button.small">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Background" Value="#7f98c7"></Setter>
+            <Setter Property="CornerRadius" Value="20"></Setter>
+            <Setter Property="Padding" Value="7, 2"></Setter>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+        </Style>
+    </Window.Styles>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -59,7 +73,7 @@
         </Grid>
 
         <!-- Main area -->
-        <Grid Grid.Row="1" ColumnDefinitions="Auto, Auto, *" Background="#1a1c20">
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, Auto, *" Background="{DynamicResource DarkBlueBrush}">
             <!-- Volume Bar -->
             <Grid Grid.Column="0" Width="150" RowDefinitions="*, Auto, Auto" Margin="0, 20">
                 <!-- Volume Meter Gauge -->
@@ -97,21 +111,27 @@
                 <Label Grid.Row="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0,5">LUFS</Label>
                 <!-- Volume bar buttons -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <StackPanel.Styles>
-                        <Style Selector="Button">
-                            <Setter Property="FontSize" Value="12" />
-                            <Setter Property="Foreground" Value="White"></Setter>
-                            <Setter Property="Background" Value="#7f98c7"></Setter>
-                            <Setter Property="CornerRadius" Value="20"></Setter>
-                            <Setter Property="Padding" Value="7, 2"></Setter>
-                        </Style>
-                    </StackPanel.Styles>
-                    <Button Margin="0,0,20,0">A</Button>
-                    <Button>INT-LRA</Button>
+                    <Button Classes="small" CornerRadius="30" Width="30" Height="30" Padding="3" Margin="0,0,20,0">
+                        <Image Margin="5,0,2,0" Source="/Assets/Images/DoubleArrow.png" />
+                    </Button>
+                    <Button Classes="small">INT-LRA</Button>
                 </StackPanel>
             </Grid>
             <!-- Details Panel -->
-            <Rectangle Grid.Column="1" Fill="#ccc" Width="170"></Rectangle>
+            <StackPanel Grid.Column="1" Width="170" Margin="0, 15, 10, 15">
+                <controls:LargeLabelControl LargeText="-21.1 LUFS" SmallText="SHORT TERM" />
+                <controls:LargeLabelControl LargeText="-20.7 LUFS" SmallText="INTEGRATED" Background="{DynamicResource LightBlueBrush}" />
+                <controls:LargeLabelControl LargeText="9.5 LU" SmallText="LOUDNESS RANGE" />
+                <controls:LargeLabelControl LargeText="11.5 LU" SmallText="LOUDNESS RANGE" />
+                <controls:LargeLabelControl LargeText="20.5 LU" SmallText="AVG. DYNAMIC (PLR)" Margin="0, 0, 0, 13" />
+                <controls:LargeLabelControl LargeText="-9.8 LUFS" SmallText="MOMENTARY MAX" Classes="button" />
+                <controls:LargeLabelControl LargeText="-15.1 LUFS" SmallText="SHORT TERM MAX" Classes="button" />
+                <controls:LargeLabelControl LargeText="0.7dB" SmallText="TRUE PEAK MAX" Classes="button" Margin="0,0,0,5" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Classes="small" Margin="0,0,20,0">AUTO</Button>
+                    <Button Classes="small" FontSize="20" FontFamily="Arial" Background="{DynamicResource FadedRedBrush}">X</Button>
+                </StackPanel>
+            </StackPanel>
             <!-- Graph -->
             <Rectangle Grid.Column="2" Fill="Black"></Rectangle>
         </Grid>
