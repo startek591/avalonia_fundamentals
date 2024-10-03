@@ -13,9 +13,9 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Padding="15,7" Background="{TemplateBinding Background}">
-                    <StackPanel Orientation="Vertical">
-                        <Label Foreground="White" HorizontalAlignment="Center" Padding="0" FontSize="21" Content="{TemplateBinding LargeText}" />
-                        <Label Foreground="White" HorizontalAlignment="Center" Padding="0,3,0,0" FontSize="11" Content="{TemplateBinding SmallText}" />
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center" Padding="0" FontSize="21" Content="{TemplateBinding LargeText}" />
+                        <Label HorizontalAlignment="Center" Padding="0" FontSize="11" Content="{TemplateBinding SmallText}" />
                     </StackPanel>
                 </Border>
             </ControlTemplate>

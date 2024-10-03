@@ -6,7 +6,7 @@ namespace Avalonia_Loudness_Meter;
 
 public class LargeLabelControl : TemplatedControl
 {
-    public static readonly StyledProperty<string> LargeTextProperty = AvaloniaProperty.Register<LargeLabelControl, string>("Large Text", "LARGE TEXT");
+    public static readonly StyledProperty<string> LargeTextProperty = AvaloniaProperty.Register<LargeLabelControl, string>(nameof(LargeText), "LARGE TEXT");
 
     public string LargeText
     {
@@ -14,7 +14,7 @@ public class LargeLabelControl : TemplatedControl
         set => SetValue(LargeTextProperty, value);
     }
 
-    public static readonly StyledProperty<string> SmallTextProperty = AvaloniaProperty.Register<LargeLabelControl, string>("SmallText", "SMALL TEXT");
+    public static readonly StyledProperty<string> SmallTextProperty = AvaloniaProperty.Register<LargeLabelControl, string>(nameof(SmallText), "SMALL TEXT");
 
     public string SmallText
     {
